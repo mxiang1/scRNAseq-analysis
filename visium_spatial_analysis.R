@@ -40,7 +40,7 @@ lm.gene = function(gene, type){
   ## perform linear regression for all genes encoding GPCRs or secreted proteins against gene of interest
   lm.res = apply(secreted.gpcr[-which(rownames(secreted.gpcr)==gene),], 1, function(x) summary(lm(x~secreted.gpcr[gene,]))$coefficients[2,c(1,4)])
   
-  ## select top 100 most significantly correlated ligands if gene of interest is a GPCR, and vice versa
+  ## select top 100 most significantly correlated secreted ligands if gene of interest is a GPCR, and vice versa
   if (type=="secreted") {
     partner = t(lm.res[,which(colnames(lm.res) %in% gpcr)])
     top100 = partner[order(partner[,2]),][1:100,]
