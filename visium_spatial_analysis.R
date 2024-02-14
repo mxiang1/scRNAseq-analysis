@@ -10,6 +10,7 @@ setwd("~/Documents/Projects/Spatial transcriptomics data/")
 
 ## import gene lists for GPCRs and secreted proteins
 gpcr = read.table("../GPCR_gene_list_HGNC.txt", sep="\t", header=T)
+gpcr = gpcr$Approved.symbol
 
 secreted = fread("../Human protein atlas/sa_location_Secreted HPA 2793 genes.tsv")
 secreted = secreted$Gene
